@@ -50,7 +50,6 @@ public class Controller implements Initializable {
 
 
     private static final int[][] chessBoard = new int[3][3];
-    private static final boolean[][] flag = new boolean[3][3];
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -74,29 +73,6 @@ public class Controller implements Initializable {
             }
     }
 
-    private void drawChess () {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (flag[i][j]) {
-                    // This square has been drawing, ignore.
-                    continue;
-                }
-                switch (chessBoard[i][j]) {
-                    case PLAY_1:
-                        drawCircle(i, j);
-                        break;
-                    case PLAY_2:
-                        drawLine(i, j);
-                        break;
-                    case EMPTY:
-                        // do nothing
-                        break;
-                    default:
-                        System.err.println("Invalid value!");
-                }
-            }
-        }
-    }
 
     private void drawCircle (int i, int j) {
         Circle circle = new Circle();
@@ -115,7 +91,6 @@ public class Controller implements Initializable {
         circle.setRadius(BOUND / 2.0 - OFFSET / 2.0);
         circle.setStroke(Color.RED);
         circle.setFill(Color.TRANSPARENT);
-        flag[i][j] = true;
     }
 
     private void drawLine (int i, int j) {
@@ -139,7 +114,6 @@ public class Controller implements Initializable {
         line_b.setEndX(i * BOUND + OFFSET * 1.5);
         line_b.setEndY((j + 1) * BOUND + OFFSET * 0.5);
         line_b.setStroke(Color.BLUE);
-        flag[i][j] = true;
     }
 
     public void connectToServer(ActionEvent actionEvent) {
