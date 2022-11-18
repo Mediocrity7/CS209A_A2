@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.layout.*?>
+
+
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.Button?>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="application.controller.Controller">
+   <Button fx:id="button_connect" layoutX="10.0" layoutY="8.0" lineSpacing="5.0" mnemonicParsing="false"
+           onAction="#connectToServer" prefHeight="36.0" prefWidth="138.0" text="连接服务器"/>
+   <TextArea fx:id="textArea_listener" editable="false" layoutX="19.0" layoutY="50.0" maxWidth="466.0"
+             minWidth="0.0" prefHeight="100.0" prefWidth="100.0" wrapText="true"/>
+   <Pane id="base" fx:id="base_square" layoutX="150.0" layoutY="50.0" prefHeight="300.0" prefWidth="300.0">
+      <Rectangle fx:id="game_panel" arcHeight="5.0" arcWidth
+              ="5.0" fill="#f2f2f2" height="270.0" layoutX="15.0"
+                 layoutY="15.0" stroke="BLACK" strokeType="INSIDE" width="270.0"/>
+      <Line endX="170.0" layoutX="115.0" layoutY="105.0" startX="-100.0"/>
+      <Line endX="170.0" layoutX="115.0" layoutY="195.0" startX="-100.0"/>
+      <Line endX="170.0" layoutX="70.0" layoutY="150.0" rotate="270.0" startX="-100.0"/>
+      <Line endX="170.0" layoutX="160.0" layoutY="151.0" rotate="90.0" startX="-100.0"/>
+   </Pane>
+</AnchorPane>
