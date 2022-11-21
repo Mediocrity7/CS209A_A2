@@ -1,6 +1,5 @@
 package application.controller;
 
-import javafx.application.Platform;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -55,7 +54,7 @@ public class Server {
       serverSocket = new ServerSocket(port);
       new AcceptSocketThread().start();
       new SendMsgToClient().start();
-      System.out.println("当前客户端连接数: " + NUM);
+      System.out.println("client number: " + NUM);
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -78,7 +77,7 @@ public class Server {
             pWriters.get(NUM).println(NUM);
             pWriters.get(NUM).flush();
             NUM++;
-            System.out.println("当前客户端连接数: " + NUM);
+            System.out.println("client number: " + NUM);
             // inform to start
             if(NUM==2){
               for (int i = 0; i < pWriters.size(); i++) {
@@ -113,7 +112,7 @@ public class Server {
           if(strMsg == null) continue;
           if(strMsg.equals("Disconnect")){
             NUM--;
-            System.out.println("当前客户端连接数: "+NUM);
+            System.out.println("client number: "+NUM);
             if(NUM==0){
               pWriters.clear();
               bReaders.clear();
