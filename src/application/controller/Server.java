@@ -12,7 +12,8 @@ public class Server {
   static ArrayList<BufferedReader> bReaders = new ArrayList<BufferedReader>();
   static ArrayList<PrintWriter> pWriters = new ArrayList<PrintWriter>();
   static LinkedList<String> msgList = new LinkedList<String>();
-  private static final int[][] chessBoard = new int[3][3];
+  private static int[][] chessBoard = new int[3][3];
+  private static int count = 0;
   private static boolean checkWin(int side){
     side++;
     int cnt;
@@ -84,6 +85,8 @@ public class Server {
                 pWriters.get(i).println(0+",1");
                 pWriters.get(i).flush();
               }
+              count = 0;
+              chessBoard = new int[3][3];
             }
           }
         } catch (IOException e) {
@@ -130,17 +133,21 @@ public class Server {
           int y = Integer.parseInt(ope[2]);
           // change the state of server
           chessBoard[x][y] = side+1;
+          count++;
           // change the state of each client
           msgList.addLast(strMsg);
           // check if game set
           if(checkWin(side)){
             msgList.addLast(side+",,1");
+          }else if(count==9){
+            msgList.addLast("-2,,1");
           }
         } catch (Exception e) {
           e.printStackTrace();
         }
       }
     }
+
   }
 
   static class SendMsgToClient extends Thread {

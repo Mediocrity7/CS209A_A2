@@ -164,6 +164,11 @@ public class Controller implements Initializable {
                             textArea_listener.appendText("You lose!");
                             CurrentTurn = -1;
                             return;
+                        }else if(win==-2){
+                            textArea_listener.clear();
+                            textArea_listener.appendText("Draw!");
+                            CurrentTurn = -1;
+                            return;
                         }
                     }
                     // operations on chess
